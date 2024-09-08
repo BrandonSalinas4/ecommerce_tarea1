@@ -6,7 +6,7 @@ export const GetAllUsers = async (req, res) => {
     const usersKey = "users";
 
     let cachedResponse = await redis.get(usersKey);
-    if (cachedResponse) {
+    if (cachedResponse.length) {
         cachedResponse = JSON.parse(cachedResponse);
 
         return res.status(200).json(cachedResponse);
